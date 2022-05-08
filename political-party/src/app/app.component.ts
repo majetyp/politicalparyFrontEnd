@@ -9,13 +9,9 @@ export class AppComponent {
   title = 'political-party';
   enableLeaderInfo = false;
   enablePartyInfo = false;
-  devActivities=false;
-  partyDetails = {
-    "politicalLeaderId": 1,
-    "politicalPartyId": 1,
-    "candidateName": "JPNarayana",
-    "candidateState": "Telanagana"
-  };
+  selectedLeader: number = 1;
+  partyDetails: any = {}
+  finalTableValues: any = [{}]
 
   partyLeaders = [
     {
@@ -39,36 +35,34 @@ export class AppComponent {
         "title": "urban area development",
         "activity": "drainage",
         "budget": "2500",
-        "state": "AP State",
+        "state": "UPState",
         "activityMonth": 5,
         "activityYear": 2023
     },
     {
       "developmentId": 2,
       "politicalLeaderId": 2,
-      "title": "Rural area development",
-      "activity": "Blacktop roads",
-      "budget": "900",
-      "state": "UPState",
-      "activityMonth": 12,
-      "activityYear": 2021
-  }
+      "title": "urban area development2",
+      "activity": "drainage2",
+      "budget": "2500",
+      "state": "APState",
+      "activityMonth": 6,
+      "activityYear": 2023
+    }
   ];
 
   onFetchDetails() {
-    console.log("clicked me!", this.partyLeaders);
-    this.partyDetails = this.partyLeaders[0];
     this.enableLeaderInfo = true;
   }
 
-  partyInformation() {
+  onFecthLeaderActivites() {
     this.enablePartyInfo = true;
-    console.log("party ifno", this.partyDetails);
+    this.partyDetails = this.partyLeaders.find( (data) => data.politicalLeaderId == this.selectedLeader);
+    this.finalTableValues = this.partyInfo.filter((data) => data.politicalLeaderId == this.selectedLeader);
+    console.log("this.partyDetails", this.partyDetails);
   }
-  getDevelopActivities()
-  {
-    this.devActivities=true;
 
+  partyInformation() {
   }
 
 }

@@ -20,6 +20,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    NgSelectModule
+    NgSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
