@@ -1,0 +1,56 @@
+
+
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
+    <div class="text-center">
+      <div>
+        <button type="button" class="btn btn-primary" (click)="onFetchDetails()">Fetch Details</button>
+      </div>"
+      <div class="form-outline" *ngIf="enableLeaderInfo">
+        <label> Leader </label>
+          <select (change)="partyInformation()">
+            <option *ngFor="let title of partyLeaders" [value]="title.politicalPartyId">
+              {{title.candidateName}}
+            </option>
+          </select>
+          <div><button (click)="getDevelopActivities()">get</button></div>
+        <div class="party-leader-details" *ngIf="devActivities">
+          <div class="info">
+              <div>
+                <label>Party Id</label>
+                <input type="text" [value]="partyDetails.politicalLeaderId" readonly/>
+              </div>
+            <div>
+              <label>Leader Name</label>
+              <input type="text" [value]="partyDetails.candidateName" />
+            </div>
+            <div>
+              <label> Leader State </label>
+              <input type="text" [value]="partyDetails.candidateState" />
+            </div>
+          </div>
+        </div>
+      </div>
+        <table class="table party-info" *ngIf="devActivities">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Activity</th>
+              <th scope="col">Budget</th>
+              <th scope="col">State</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let party of partyInfo" class="table-active">
+              <td>{{party.title}}</td>
+              <td>{{party.activity}}</td>
+              <td>{{party.budget}}</td>
+              <td>{{party.state}}</td>
+              <td>{{party.activityYear}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>
+</div>
